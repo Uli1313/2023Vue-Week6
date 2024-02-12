@@ -4,7 +4,7 @@
     <RouterLink to="/">回前台</RouterLink> |
     <RouterLink to="/admin/products">後台產品列表</RouterLink> |
     <RouterLink to="/admin/orders">後台訂單</RouterLink> |
-    <a href="#" click.prevent="singout">登出</a>
+    <a href="#" @click.prevent="signout">登出</a>
   </div>
 
   <RouterView v-if="checkSuccess" />
@@ -44,6 +44,12 @@ export default {
         alert('請先登入')
         this.$router.push('/login')
       }
+    },
+    signout () {
+      console.log(123)
+      document.cookie = 'W6Token=;expires=;'
+      alert('已登出')
+      this.$router.push('/login')
     }
   },
   mounted () {
